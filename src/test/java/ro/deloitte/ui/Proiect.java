@@ -164,7 +164,7 @@ public class Proiect {
             }
         }
     }
-}
+
     @Then("^The expected username appears as no value for username$")
     public void assertingUsernameBlank() {
         Assert.assertTrue(driver.findElement(By.xpath("//strong[text()='No Value for username']")).isDisplayed());
