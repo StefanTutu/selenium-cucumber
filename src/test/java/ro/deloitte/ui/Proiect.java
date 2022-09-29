@@ -54,13 +54,7 @@ public class Proiect {
 
     @And("^I input text:(.*) in the Password input field$")
     public void inputTextInField2(String password) {
-        driver.findElement(By.name(password)).sendKeys(password);
-    }
-
-    @And("^I input text: (.*) in the (.*) input field$")
-    public void inputTextInField3(String comments) {
-        driver.findElement(By.name(comments)).clear();
-        driver.findElement(By.name(comments)).sendKeys(comments);
+        driver.findElement(By.name("password")).sendKeys(password);
     }
 
     @And("^I click an element by the link text: (.*)$")
@@ -103,7 +97,6 @@ public class Proiect {
 
     @When("^I click on submit button$")
     public void clickSubmitbutton() {
-        driver.findElement(By.name("submitbutton")).click();
         driver.findElement(By.xpath("//input[@value='submit']")).click();
     }
 
@@ -122,8 +115,9 @@ public class Proiect {
     public void assertingCheckBox(String check) {
         List<WebElement> elementList = driver.findElements(By.xpath("//li[contains(@id,'_valuecheckboxes')]"));
         Assert.assertEquals(1, elementList.size());
+        String expected = check.substring(check.length()-1);
         for (WebElement element : elementList) {
-            if (element.getText().equals(("cb") + check)) {
+            if (element.getText().equals(("cb") + expected)) {
                 Assert.assertTrue(true);
             } else {
                 Assert.fail();
