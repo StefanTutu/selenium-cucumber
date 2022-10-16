@@ -31,19 +31,13 @@ Feature: Project Scenarios
     And I select the options SelectionItem3 and SelectionItem4 in the Multiple Select Values drop down menu
     And I select the option DropDownItem6 in the Dropdown drop down menu
     And I click on submit button
-
-    Then The expected username is Username
-    And The expected password is Password
-    And The expected checkbox is checkBoxes
-    And The expected radio button is radioButtons
-    And The expected selected multiple value is multipleSelect
-    And The expected dropdown option is dropdownOption
-    Examples:
-      | Username   | Password| checkBoxes | radioButtons | multipleSelect | dropdownOption |
-      | Elena      | abc     | 1          | 1            | 1              | 1              |
-      | Mara       | def     | 2          | 2            | 2              | 2              |
-      | Andrei     | ghi     | 3          | 3            | 4              | 6              |
-      | Stefan     | jkl     | 3          | 3            | 4              | 6              |
-      | Andreea    | mno     | 2          | 2            | 2              | 3              |
+    Given I navigate to https://testpages.herokuapp.com/styled/basic-html-form-test.html
+    When I input text:<Username> in the Username input field
+    And I input text:<Password> in the Password input field
+    And I click an element by the link text: <checkBoxes>
+    And I click the radio button with label: <radioButtons>
+    And I select the options <multipleSelect1> and <multipleSelect2> in the Multiple Select Values drop down menu
+    And I select the option <dropdownOption> in the Dropdown drop down menu
+    When I click on submit button
 
 
